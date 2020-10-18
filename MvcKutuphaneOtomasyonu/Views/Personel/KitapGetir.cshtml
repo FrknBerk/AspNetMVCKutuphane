@@ -1,0 +1,53 @@
+﻿@model MvcKutuphaneOtomasyonu.Models.Entity.KITAP
+@{
+    ViewBag.Title = "KitapGetir";
+    Layout = "~/Views/Shared/_PersonelLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        @using (Html.BeginForm("KitapGuncelle", "Personel", FormMethod.Post))
+        {
+            <div style="margin-top:30px;">
+                <label><b>Kitap Id</b></label>
+                @Html.TextBoxFor(x => x.KId, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div>
+                <label><b>Kitap Adı</b></label>
+                @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Yazar Id</b></label>
+                @Html.DropDownListFor(x => x.YAZAR.YazarId, (IEnumerable<SelectListItem>)ViewBag.yzr, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Kategori Id</b></label>
+                @Html.DropDownListFor(x => x.KATEGORI.KategoriId, (IEnumerable<SelectListItem>)ViewBag.ktgr, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Basım Tarihi</b></label>
+                @Html.TextBoxFor(x => x.BasımTarihi, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Resim</b></label>
+                @Html.TextBoxFor(x => x.Resim, new { @class = "form-control" })
+            </div>
+            <div style="margin-top:15px;">
+                <button class="btn btn-success">Kitap Güncelle</button>
+            </div>
+
+        }
+    </div>
+
+</body>
+</html>

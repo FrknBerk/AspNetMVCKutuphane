@@ -1,0 +1,62 @@
+﻿@using MvcKutuphaneOtomasyonu.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<PERSONEL>
+@{
+    ViewBag.Title = "PersonelListele";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>PERSONEL</h2>
+
+        <div class="table-responsive-xl">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>PERSONEL ID</th>
+                        <th>PERSONEL ADI</th>
+                        <th>PERSONEL SOYADI</th>
+                        <th>MAİL ADRESİ</th>
+                        <th>ŞİFRE</th>
+                        <th>DURUM ID</th>
+                        <th>DURUM ADI</th>
+                        <th>SİL</th>
+                        <th>GÜNCELLE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pr in Model)
+                    {
+                        <tr>
+                            <th>@pr.PersonelId</th>
+                            <td>@pr.Ad</td>
+                            <td>@pr.Soyad</td>
+                            <td>@pr.Mail</td>
+                            <td>@pr.Sifre</td>
+                            <td>@pr.DurumId</td>
+                            <td>@pr.GIRIS.DurumAd</td>
+                            <td><a href="/Yonetici/PersonelSil/@pr.PersonelId" class="btn btn-danger">Sil</a></td>
+                            <td><a href="/Yonetici/PersonelGetir/@pr.PersonelId" class="btn btn-success">Güncelle</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("PersonelListele", new { sayfa }))
+<a href="/Yonetici/PersonelEkle/" class="btn btn-primary">Personel Ekle</a>

@@ -1,0 +1,53 @@
+﻿@model MvcKutuphaneOtomasyonu.Models.Entity.YONETICI
+@{
+    ViewBag.Title = "YoneticiGetir";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        @using (Html.BeginForm("YoneticiGuncelle", "Yonetici", FormMethod.Post))
+        {
+            <div style="margin-top:30px;">
+                <label><b>Yönetici Id</b></label>
+                @Html.TextBoxFor(x => x.YoneticiId, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div>
+                <label><b>Yönetici Adı</b></label>
+                @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Yönetici Soyadı</b></label>
+                @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Mail Adresi</b></label>
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Şifre</b></label>
+                @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Durum Id</b></label>
+                @Html.DropDownListFor(x => x.GIRIS.DurumId, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+            </div>
+            <div style="margin-top:15px;">
+                <button class="btn btn-success">Yönetici Güncelle</button>
+            </div>
+
+        }
+    </div>
+
+</body>
+</html>

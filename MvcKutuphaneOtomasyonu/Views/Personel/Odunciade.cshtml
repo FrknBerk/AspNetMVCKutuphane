@@ -1,0 +1,40 @@
+﻿@model MvcKutuphaneOtomasyonu.Models.Entity.ISLEM
+@{
+    ViewBag.Title = "Odunciade";
+    Layout = "~/Views/Shared/_PersonelLayout.cshtml";
+}
+
+@using (Html.BeginForm("OduncGuncelle", "Personel", FormMethod.Post))
+{
+    <div style="margin-top:15px"></div>
+    <div class="form-group">
+        <div style="margin-top:15px">
+            <label>İşlem ID</label>
+            @Html.TextBoxFor(x => x.IslemId, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div>
+            <label>KİTAP ADI</label>
+            @Html.TextBoxFor(x => x.KITAP.Ad, new { @class = "form-control" })
+        </div>
+        <div>
+            <label>ÜYE</label>
+            @Html.TextBoxFor(x => x.OGRENCI.Ad , new { @class = "form-control" })
+        </div>
+        <div>
+            <label>ALIŞ TARİHİ</label>
+            @Html.TextBoxFor(x => x.AlısTarihi, "{0: dd.MMM.yyyy}", new { @class = "form-control" })
+        </div>
+        <div>
+            <label>İADE TARİHİ</label>
+            @Html.TextBoxFor(x => x.VerisTarihi, "{0: dd.MMM.yyyy}", new { @class = "form-control" })
+        </div>
+        <div>
+            <label>ÜYENİN GETİRDİĞİ TARİH</label>
+            <input type="text" class="form-control" name="UyeGetirTarihi" value="@DateTime.Now.ToShortDateString()" />
+        </div>
+        <br />
+        <div style="margin-top:15px">
+            <button class="btn btn-group" style="background-color:#64d8ca; color:white">Ödünç Kitabı Geri Al</button>
+        </div>
+    </div>
+}

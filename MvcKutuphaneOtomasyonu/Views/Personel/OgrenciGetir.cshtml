@@ -1,0 +1,73 @@
+﻿@model MvcKutuphaneOtomasyonu.Models.Entity.OGRENCI
+@{
+    ViewBag.Title = "OgrenciGetir";
+    Layout = "~/Views/Shared/_PersonelLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        @using (Html.BeginForm("OgrenciGuncelle", "Personel", FormMethod.Post))
+        {
+            <div style="margin-top:30px;">
+                <label><b>Öğrenci Id</b></label>
+                @Html.TextBoxFor(x => x.OgrenciId, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div>
+                <label><b>Öğrenci Adı</b></label>
+                @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Öğrenci Soyadı</b></label>
+                @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Mezuniyet Durumu</b></label>
+                @Html.TextBoxFor(x => x.MezuniyetDurumu, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Okul Id</b></label>
+                @Html.DropDownListFor(x => x.OKUL.OkulId, (List<SelectListItem>)ViewBag.okl, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Bölüm Id</b></label>
+                @Html.DropDownListFor(x => x.BOLUM.BolumId, (List<SelectListItem>)ViewBag.blm, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Telefon Numarası</b></label>
+                @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Adres</b></label>
+                @Html.TextBoxFor(x => x.Adres, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Mail Adresi</b></label>
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Şifre</b></label>
+                @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Durum Id</b></label>
+                @Html.DropDownListFor(x => x.GIRIS.DurumId, (List<SelectListItem>)ViewBag.drm, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div style="margin-top:15px;">
+                <button class="btn btn-success">Öğrenci Güncelle</button>
+            </div>
+
+        }
+    </div>
+
+</body>
+</html>

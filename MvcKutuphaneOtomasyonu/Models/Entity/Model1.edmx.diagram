@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5d8d8d86d9104f689dd05a39d18f5d2a" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="KutuphaneDbModel.BOLUM" Width="1.5" PointX="5.25" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.CEZALAR" Width="1.5" PointX="12.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.GIRIS" Width="1.5" PointX="0.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.IADE" Width="1.5" PointX="12.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.ISLEM" Width="1.5" PointX="12.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.KATEGORI" Width="1.5" PointX="8.25" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.MAIL" Width="1.5" PointX="15.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.OGRENCI" Width="1.5" PointX="10.5" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.OGRENCIKATEGORI" Width="1.5" PointX="15.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.OKUL" Width="1.5" PointX="8.25" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.PERSONEL" Width="1.5" PointX="5.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.YAZAR" Width="1.5" PointX="7.5" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.YONETICI" Width="1.5" PointX="3" PointY="28.75" IsExpanded="true" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_BOLUM_GIRIS" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_BOLUM_YONETICI" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_OGRENCI_BOLUM" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_CEZALAR_ISLEM" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_CEZALAR_OGRENCI" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_OGRENCI_GIRIS" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_OKUL_GIRIS" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_PERSONEL_GIRIS" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_YONETICI_GIRIS" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_IADE_OGRENCI" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_ISLEM_OGRENCI" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_ISLEM_PERSONEL" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_ISLEM_YONETICI" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_OGRENCIKATEGORI_KATEGORI" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_MAIL_OGRENCI" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_MAIL_PERSONEL" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_OGRENCI_OKUL" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_OGRENCIKATEGORI_OGRENCI" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_OKUL_YONETICI" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_PERSONEL_YONETICI" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_YAZAR_PERSONEL" ManuallyRouted="false" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_YAZAR_YONETICI" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KutuphaneDbModel.KITAP" Width="1.5" PointX="10.5" PointY="23.625" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_IADE_KITAP" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_ISLEM_KITAP" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_KITAP_KATEGORI" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_KITAP_PERSONEL" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_KITAP_YAZAR" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_KITAP_YONETICI" />
+        <AssociationConnector Association="KutuphaneDbModel.FK_MAIL_KITAP" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

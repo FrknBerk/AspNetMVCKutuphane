@@ -1,0 +1,79 @@
+﻿@model MvcKutuphaneOtomasyonu.Models.Entity.OGRENCI
+@{
+    ViewBag.Title = "OgrenciEkle";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        @using (Html.BeginForm("OgrenciEkle", "Yonetici", FormMethod.Post))
+        {
+            <div style="margin-top:30px;">
+                <label><b>Öğrenci Adı</b></label>
+                @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Ad, "", new { @style = "color:red" })
+            </div>
+            <div>
+                <label><b>Öğrenci Soyadı</b></label>
+                @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Soyad, "", new { @style = "color:blue" })
+            </div>
+            <div>
+                <label><b>Mezuniyet Durumu</b></label>
+                @Html.TextBoxFor(x => x.MezuniyetDurumu, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.MezuniyetDurumu, "", new { @style = "color:blue" })
+            </div>
+            <div>
+                <label><b>Okul Seçiniz</b></label>
+                @Html.DropDownListFor(x => x.OKUL.OkulId, (IEnumerable<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.OkulId, "", new { @style = "color:black" })
+            </div>
+            <div>
+                <label><b>Bölüm Seçiniz</b></label>
+                @Html.DropDownListFor(x => x.BOLUM.BolumId, (IEnumerable<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.BolumId, "", new { @style = "color:black" })
+            </div>
+            <div>
+                <label><b>Telefon Numarası</b></label>
+                @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Telefon, "", new { @style = "color:blue" })
+            </div>
+            <div>
+                <label><b>Adres</b></label>
+                @Html.TextBoxFor(x => x.Adres, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Adres, "", new { @style = "color:blue" })
+            </div>
+            <div>
+                <label><b>Mail</b></label>
+                @Html.DisplayFor(x => x.Mail, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Mail, "", new { @class = "error" })
+            </div>
+            <div>
+                <label><b>Şifre</b></label>
+                @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Sifre, "", new { @style = "color:blue" })
+            </div>
+            <div>
+                <label><b>Durum Seçiniz</b></label>
+                @Html.DropDownListFor(x => x.DurumId, (IEnumerable<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.DurumId, "", new { @style = "color:black" })
+            </div>
+            <div style="margin-top:15px;">
+                <button class="btn btn-primary">Öğrenci Ekle</button>
+            </div>
+        }
+    </div>
+
+</body>
+</html>

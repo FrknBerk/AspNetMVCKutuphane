@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 240px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    color: #00ffff;
+                }
+
+        .main {
+            margin-left: 240px; /* Same as the width of the sidenav */
+            padding: 0px 10px;
+        }
+
+        @@media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+                .sidebar a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="/Personel/AnaSayfa/"><i class="glyphicon glyphicon-home"></i>&nbsp;Ana Sayfa</a>
+        <a href="/Personel/KitapListele/"><i class="fa fa-book"></i>&nbsp;Kitap</a>
+        <a href="/Personel/YazarListele/"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Yazar</a>
+        <a href="/Personel/OduncVer/"><i class="glyphicon glyphicon-circle-arrow-right"></i>&nbsp;Ödünç Kitap Ver</a>
+        <a href="/Personel/Odunc/"><i class="glyphicon glyphicon-circle-arrow-left"></i>&nbsp;Ödünç Kitap Al</a>
+        <a href="/Personel/OduncSayfa/"><i class="fa fa-shopping-basket"></i>&nbsp;Ödünç Kitap Listesi</a>
+        <a href="/Personel/KategoriListele/"><i class="fa fa-list"></i>&nbsp;Kategori</a>
+        <a href="/Personel/OgrenciListele/"><i class="fa fa-mortar-board"></i>&nbsp;Ogrenci</a>
+        <a href="/Personel/Profilim/"><i class="fa fa-user"></i>&nbsp;Profilim</a>
+        <a href="/Personel/Logout/"><i class="glyphicon glyphicon-log-out"></i>&nbsp;Çıkış Yap</a>
+    </div>
+
+    <div class="main">
+        @RenderBody()
+        @RenderSection("scripts", required: false);
+    </div>
+
+</body>
+</html>

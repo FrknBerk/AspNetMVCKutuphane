@@ -1,0 +1,44 @@
+﻿@using MvcKutuphaneOtomasyonu.Models.Entity
+@model List<OGRENCIKATEGORI>
+@{
+    ViewBag.Title = "KategoriListele";
+    Layout = "~/Views/Shared/_OgrenciLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>KATEGORİ</h2>
+
+        <div class="table-responsive-xl">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>KATEGORİ ADI</th>
+                        <th>SİL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ktgr in Model)
+                    {
+                        <tr>
+                            <td>@ktgr.KATEGORI.KategoriAd</td>
+                            <td><a href="" class="btn btn-danger">Sil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

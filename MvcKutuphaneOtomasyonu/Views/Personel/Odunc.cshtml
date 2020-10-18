@@ -1,0 +1,36 @@
+﻿@using MvcKutuphaneOtomasyonu.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<ISLEM>
+@{
+    ViewBag.Title = "Odunc";
+    Layout = "~/Views/Shared/_PersonelLayout.cshtml";
+}
+
+
+<h2>Ödünç Kitap Listesi</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>İşlem ID</th>
+        <th>Kitap Adı</th>
+        <th>Üye</th>
+        <th>Personel</th>
+        <th>Alış Tarihi</th>
+        <th>Üye İade Tarihi</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var ktp in Model)
+    {
+        <tr>
+            <th>@ktp.IslemId</th>
+            <td>@ktp.KITAP.Ad</td>
+            <td>@ktp.OGRENCI.Ad @ktp.OGRENCI.Soyad</td>
+            <td>@ktp.PersonelId</td>
+            <td>@Convert.ToDateTime(ktp.AlısTarihi).ToString("dd/MMM/yyyy")</td>
+            <td>@Convert.ToDateTime(ktp.UyeGetirTarihi).ToString("dd/MMM/yyyy")</td>
+            <td>@Html.ActionLink("Kitabı İade Et", "Odunciade", new { id = ktp.IslemId }, new { @class = "btn btn-default", @style = "background-color:#64d8ca", onclick = "return confirm('Kitabı İade Etmek İstiyor Musunuz...?')" })</td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))

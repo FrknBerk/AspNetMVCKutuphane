@@ -1,0 +1,25 @@
+﻿@using MvcKutuphaneOtomasyonu.Models.Entity
+@model List<ISLEM>
+@{
+    ViewBag.Title = "Kitaplarim";
+    Layout = "~/Views/Shared/_OgrenciLayout.cshtml";
+}
+
+<br />
+<h2>Kitap Geçmişim</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Kitap Adı</th>
+        <th>Alış Tarihi</th>
+        <th>Üye İade Tarihi</th>
+    </tr>
+    @foreach (var ktp in Model)
+    {
+        <tr>
+            <td>@ktp.KITAP.Ad</td>
+            <td>@Convert.ToDateTime(ktp.AlısTarihi).ToString("dd/MMM/yyyy")</td>
+            <td>@Convert.ToDateTime(ktp.VerisTarihi).ToString("dd/MMM/yyyy")</td>
+        </tr>
+    }
+</table>

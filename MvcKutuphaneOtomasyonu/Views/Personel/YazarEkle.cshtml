@@ -1,0 +1,37 @@
+﻿@model MvcKutuphaneOtomasyonu.Models.Entity.YAZAR
+@{
+    ViewBag.Title = "YazarEkle";
+    Layout = "~/Views/Shared/_PersonelLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <form class="form-group" method="post">
+            <div style="margin-top:30px;">
+                <label><b>Yazar Adı</b></label>
+                @Html.TextBoxFor(x => x.YazarAd, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.YazarSoyad, "", new { @style = "color:red" })
+            </div>
+            <div>
+                <label><b>Yazar Soyadı</b></label>
+                @Html.TextBoxFor(x => x.YazarSoyad, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.YazarSoyad, "", new { @style = "color:blue" })
+            </div>
+            <div style="margin-top:15px;">
+                <button class="btn btn-primary">Yazar Ekle</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

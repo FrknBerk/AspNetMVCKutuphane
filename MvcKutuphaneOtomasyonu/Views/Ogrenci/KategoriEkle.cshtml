@@ -1,0 +1,25 @@
+﻿@model MvcKutuphaneOtomasyonu.Models.Entity.OGRENCIKATEGORI
+@{
+    ViewBag.Title = "KategoriEkle";
+    Layout = "~/Views/Shared/_OgrenciLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Üye Id</label>
+        @*@Html.TextBoxFor(x => x.OGRENCI.OgrenciId, new { @class = "form-control" })*@
+        @Html.DropDownListFor(x => x.OGRENCI.OgrenciId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>KAtEGORİ ID</label>
+        @*@Html.TextBoxFor(x => x.KATEGORI.KategoriId, new { @class = "form-control" })*@
+        @Html.DropDownListFor(x => x.KATEGORI.KategoriId, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    </div>
+    <input type="hidden" value="true" name="Aktif" />
+    <input type="hidden" value="true" name="Durumu" />
+    <div style="margin-top:15px">
+        @*@Html.ActionLink("Kategorilerime Ekle","Ogrenci", new { },new { @class = "btn btn-default", @style = "background-color:#64d8ca", onclick = "return confirm('Kategorilerime Eklemek İstiyor musunuz...?'})" })*@
+        <button class="btn btn-group" style="background-color:#a330b5; color:white;">Kategorilerime Ekle</button>
+    </div>
+</form>

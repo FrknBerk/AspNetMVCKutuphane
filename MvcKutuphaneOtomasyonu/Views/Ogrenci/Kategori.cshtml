@@ -1,0 +1,32 @@
+﻿@using MvcKutuphaneOtomasyonu.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<KATEGORI>
+@{
+    ViewBag.Title = "Kategori";
+    Layout = "~/Views/Shared/_OgrenciLayout.cshtml";
+}
+
+@using (Html.BeginForm("Kategori", "Ogrenci", FormMethod.Get))
+{
+    <div style="margin-top:15px; margin-bottom:15px;">
+        <b>Aranacak Kitap Adını Girin: &nbsp;</b>@Html.TextBox("p")
+        @*<input type="submit" value="Ara" />*@
+        <button class="glyphicon glyphicon-search">Ara</button>
+    </div>
+}
+
+<table class="table table-striped">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>KATEGORİ ADI</th>
+        <th>KATEGORİ EKLE</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.KategoriAd</td>
+            <td><a href="/Ogrenci/KategoriEkle/@x.KategoriId" class="btn btn-primary">Kategorilerime Ekle</a></td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Kategori", new { sayfa }))

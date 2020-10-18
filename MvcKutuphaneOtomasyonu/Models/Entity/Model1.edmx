@@ -1,0 +1,1595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KutuphaneDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BOLUM">
+          <Key>
+            <PropertyRef Name="BolumId" />
+          </Key>
+          <Property Name="BolumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BolumAd" Type="nvarchar" MaxLength="100" />
+          <Property Name="EkleyenId" Type="int" />
+          <Property Name="DurumId" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="CEZALAR">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrenciId" Type="int" />
+          <Property Name="BaslangıcTarihi" Type="smalldatetime" />
+          <Property Name="BıtısTarihi" Type="smalldatetime" />
+          <Property Name="Para" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IslemId" Type="int" />
+        </EntityType>
+        <EntityType Name="GIRIS">
+          <Key>
+            <PropertyRef Name="DurumId" />
+          </Key>
+          <Property Name="DurumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DurumAd" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IADE">
+          <Key>
+            <PropertyRef Name="IadeId" />
+          </Key>
+          <Property Name="IadeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrenciId" Type="int" />
+          <Property Name="KitapId" Type="int" />
+          <Property Name="IadeTarih" Type="date" />
+        </EntityType>
+        <EntityType Name="ISLEM">
+          <Key>
+            <PropertyRef Name="IslemId" />
+          </Key>
+          <Property Name="IslemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrenciId" Type="int" />
+          <Property Name="KitapId" Type="int" />
+          <Property Name="AlısTarihi" Type="smalldatetime" />
+          <Property Name="VerisTarihi" Type="smalldatetime" />
+          <Property Name="UyeGetirTarihi" Type="smalldatetime" />
+          <Property Name="IslemDurumu" Type="bit" />
+          <Property Name="Uyarı" Type="smalldatetime" />
+          <Property Name="PersonelId" Type="int" />
+          <Property Name="YoneticiId" Type="int" />
+        </EntityType>
+        <EntityType Name="KATEGORI">
+          <Key>
+            <PropertyRef Name="KategoriId" />
+          </Key>
+          <Property Name="KategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAd" Type="nvarchar" MaxLength="100" />
+          <Property Name="Aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="KITAP">
+          <Key>
+            <PropertyRef Name="KId" />
+          </Key>
+          <Property Name="KId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="YazarId" Type="int" />
+          <Property Name="KategoriId" Type="int" />
+          <Property Name="BasımTarihi" Type="nvarchar" MaxLength="4" />
+          <Property Name="Sayfa" Type="int" />
+          <Property Name="Yayınevi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resim" Type="nvarchar" MaxLength="400" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="PersonelId" Type="int" />
+          <Property Name="YoneticiId" Type="int" />
+        </EntityType>
+        <EntityType Name="MAIL">
+          <Key>
+            <PropertyRef Name="MailId" />
+          </Key>
+          <Property Name="MailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailKonu" Type="nvarchar" MaxLength="200" />
+          <Property Name="MailMesaj" Type="nvarchar" MaxLength="300" />
+          <Property Name="OgrenciId" Type="int" />
+          <Property Name="OgrenciMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonelId" Type="int" />
+          <Property Name="PersonelMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="KitapId" Type="int" />
+          <Property Name="KitapAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="OGRENCI">
+          <Key>
+            <PropertyRef Name="OgrenciId" />
+          </Key>
+          <Property Name="OgrenciId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="MezuniyetDurumu" Type="nvarchar" MaxLength="50" />
+          <Property Name="OkulId" Type="int" />
+          <Property Name="BolumId" Type="int" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="DurumId" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="OGRENCIKATEGORI">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrenciId" Type="int" />
+          <Property Name="KategoriId" Type="int" />
+          <Property Name="Durumu" Type="bit" />
+          <Property Name="Aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="OKUL">
+          <Key>
+            <PropertyRef Name="OkulId" />
+          </Key>
+          <Property Name="OkulId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulAdı" Type="nvarchar" MaxLength="100" />
+          <Property Name="EkleyenId" Type="int" />
+          <Property Name="DurumId" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="PERSONEL">
+          <Key>
+            <PropertyRef Name="PersonelId" />
+          </Key>
+          <Property Name="PersonelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="DurumId" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="YoneticiId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="YAZAR">
+          <Key>
+            <PropertyRef Name="YazarId" />
+          </Key>
+          <Property Name="YazarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YazarAd" Type="nvarchar" MaxLength="100" />
+          <Property Name="YazarSoyad" Type="nvarchar" MaxLength="100" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="PersonelId" Type="int" />
+          <Property Name="YoneticiId" Type="int" />
+        </EntityType>
+        <EntityType Name="YONETICI">
+          <Key>
+            <PropertyRef Name="YoneticiId" />
+          </Key>
+          <Property Name="YoneticiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="DurumId" Type="int" />
+        </EntityType>
+        <Association Name="FK_BOLUM_GIRIS">
+          <End Role="GIRIS" Type="Self.GIRIS" Multiplicity="0..1" />
+          <End Role="BOLUM" Type="Self.BOLUM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRIS">
+              <PropertyRef Name="DurumId" />
+            </Principal>
+            <Dependent Role="BOLUM">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BOLUM_YONETICI">
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="0..1" />
+          <End Role="BOLUM" Type="Self.BOLUM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="BOLUM">
+              <PropertyRef Name="EkleyenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CEZALAR_ISLEM">
+          <End Role="ISLEM" Type="Self.ISLEM" Multiplicity="0..1" />
+          <End Role="CEZALAR" Type="Self.CEZALAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ISLEM">
+              <PropertyRef Name="IslemId" />
+            </Principal>
+            <Dependent Role="CEZALAR">
+              <PropertyRef Name="IslemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CEZALAR_OGRENCI">
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="0..1" />
+          <End Role="CEZALAR" Type="Self.CEZALAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OGRENCI">
+              <PropertyRef Name="OgrenciId" />
+            </Principal>
+            <Dependent Role="CEZALAR">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IADE_KITAP">
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="0..1" />
+          <End Role="IADE" Type="Self.IADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KITAP">
+              <PropertyRef Name="KId" />
+            </Principal>
+            <Dependent Role="IADE">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IADE_OGRENCI">
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="0..1" />
+          <End Role="IADE" Type="Self.IADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OGRENCI">
+              <PropertyRef Name="OgrenciId" />
+            </Principal>
+            <Dependent Role="IADE">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISLEM_KITAP">
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="0..1" />
+          <End Role="ISLEM" Type="Self.ISLEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KITAP">
+              <PropertyRef Name="KId" />
+            </Principal>
+            <Dependent Role="ISLEM">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISLEM_OGRENCI">
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="0..1" />
+          <End Role="ISLEM" Type="Self.ISLEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OGRENCI">
+              <PropertyRef Name="OgrenciId" />
+            </Principal>
+            <Dependent Role="ISLEM">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISLEM_PERSONEL">
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="0..1" />
+          <End Role="ISLEM" Type="Self.ISLEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONEL">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="ISLEM">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISLEM_YONETICI">
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="0..1" />
+          <End Role="ISLEM" Type="Self.ISLEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="ISLEM">
+              <PropertyRef Name="YoneticiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_KATEGORI">
+          <End Role="KATEGORI" Type="Self.KATEGORI" Multiplicity="0..1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KATEGORI">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_PERSONEL">
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="0..1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONEL">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_YAZAR">
+          <End Role="YAZAR" Type="Self.YAZAR" Multiplicity="0..1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YAZAR">
+              <PropertyRef Name="YazarId" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="YazarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_YONETICI">
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="0..1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="YoneticiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MAIL_KITAP">
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="0..1" />
+          <End Role="MAIL" Type="Self.MAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KITAP">
+              <PropertyRef Name="KId" />
+            </Principal>
+            <Dependent Role="MAIL">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MAIL_OGRENCI">
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="0..1" />
+          <End Role="MAIL" Type="Self.MAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OGRENCI">
+              <PropertyRef Name="OgrenciId" />
+            </Principal>
+            <Dependent Role="MAIL">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MAIL_PERSONEL">
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="0..1" />
+          <End Role="MAIL" Type="Self.MAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONEL">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="MAIL">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OGRENCI_BOLUM">
+          <End Role="BOLUM" Type="Self.BOLUM" Multiplicity="0..1" />
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOLUM">
+              <PropertyRef Name="BolumId" />
+            </Principal>
+            <Dependent Role="OGRENCI">
+              <PropertyRef Name="BolumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OGRENCI_GIRIS">
+          <End Role="GIRIS" Type="Self.GIRIS" Multiplicity="0..1" />
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRIS">
+              <PropertyRef Name="DurumId" />
+            </Principal>
+            <Dependent Role="OGRENCI">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OGRENCI_OKUL">
+          <End Role="OKUL" Type="Self.OKUL" Multiplicity="0..1" />
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OKUL">
+              <PropertyRef Name="OkulId" />
+            </Principal>
+            <Dependent Role="OGRENCI">
+              <PropertyRef Name="OkulId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OGRENCIKATEGORI_KATEGORI">
+          <End Role="KATEGORI" Type="Self.KATEGORI" Multiplicity="0..1" />
+          <End Role="OGRENCIKATEGORI" Type="Self.OGRENCIKATEGORI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KATEGORI">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="OGRENCIKATEGORI">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OGRENCIKATEGORI_OGRENCI">
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="0..1" />
+          <End Role="OGRENCIKATEGORI" Type="Self.OGRENCIKATEGORI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OGRENCI">
+              <PropertyRef Name="OgrenciId" />
+            </Principal>
+            <Dependent Role="OGRENCIKATEGORI">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OKUL_GIRIS">
+          <End Role="GIRIS" Type="Self.GIRIS" Multiplicity="0..1" />
+          <End Role="OKUL" Type="Self.OKUL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRIS">
+              <PropertyRef Name="DurumId" />
+            </Principal>
+            <Dependent Role="OKUL">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OKUL_YONETICI">
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="0..1" />
+          <End Role="OKUL" Type="Self.OKUL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="OKUL">
+              <PropertyRef Name="EkleyenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONEL_GIRIS">
+          <End Role="GIRIS" Type="Self.GIRIS" Multiplicity="0..1" />
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRIS">
+              <PropertyRef Name="DurumId" />
+            </Principal>
+            <Dependent Role="PERSONEL">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONEL_YONETICI">
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="0..1" />
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="PERSONEL">
+              <PropertyRef Name="YoneticiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YAZAR_PERSONEL">
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="0..1" />
+          <End Role="YAZAR" Type="Self.YAZAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONEL">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="YAZAR">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YAZAR_YONETICI">
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="0..1" />
+          <End Role="YAZAR" Type="Self.YAZAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="YAZAR">
+              <PropertyRef Name="YoneticiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YONETICI_GIRIS">
+          <End Role="GIRIS" Type="Self.GIRIS" Multiplicity="0..1" />
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRIS">
+              <PropertyRef Name="DurumId" />
+            </Principal>
+            <Dependent Role="YONETICI">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KutuphaneDbModelStoreContainer">
+          <EntitySet Name="BOLUM" EntityType="Self.BOLUM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CEZALAR" EntityType="Self.CEZALAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GIRIS" EntityType="Self.GIRIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IADE" EntityType="Self.IADE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ISLEM" EntityType="Self.ISLEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KITAP" EntityType="Self.KITAP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MAIL" EntityType="Self.MAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OGRENCI" EntityType="Self.OGRENCI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OGRENCIKATEGORI" EntityType="Self.OGRENCIKATEGORI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OKUL" EntityType="Self.OKUL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YAZAR" EntityType="Self.YAZAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YONETICI" EntityType="Self.YONETICI" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BOLUM_GIRIS" Association="Self.FK_BOLUM_GIRIS">
+            <End Role="GIRIS" EntitySet="GIRIS" />
+            <End Role="BOLUM" EntitySet="BOLUM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOLUM_YONETICI" Association="Self.FK_BOLUM_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="BOLUM" EntitySet="BOLUM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CEZALAR_ISLEM" Association="Self.FK_CEZALAR_ISLEM">
+            <End Role="ISLEM" EntitySet="ISLEM" />
+            <End Role="CEZALAR" EntitySet="CEZALAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CEZALAR_OGRENCI" Association="Self.FK_CEZALAR_OGRENCI">
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+            <End Role="CEZALAR" EntitySet="CEZALAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IADE_KITAP" Association="Self.FK_IADE_KITAP">
+            <End Role="KITAP" EntitySet="KITAP" />
+            <End Role="IADE" EntitySet="IADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IADE_OGRENCI" Association="Self.FK_IADE_OGRENCI">
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+            <End Role="IADE" EntitySet="IADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISLEM_KITAP" Association="Self.FK_ISLEM_KITAP">
+            <End Role="KITAP" EntitySet="KITAP" />
+            <End Role="ISLEM" EntitySet="ISLEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISLEM_OGRENCI" Association="Self.FK_ISLEM_OGRENCI">
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+            <End Role="ISLEM" EntitySet="ISLEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISLEM_PERSONEL" Association="Self.FK_ISLEM_PERSONEL">
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+            <End Role="ISLEM" EntitySet="ISLEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISLEM_YONETICI" Association="Self.FK_ISLEM_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="ISLEM" EntitySet="ISLEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_KATEGORI" Association="Self.FK_KITAP_KATEGORI">
+            <End Role="KATEGORI" EntitySet="KATEGORI" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_PERSONEL" Association="Self.FK_KITAP_PERSONEL">
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_YAZAR" Association="Self.FK_KITAP_YAZAR">
+            <End Role="YAZAR" EntitySet="YAZAR" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_YONETICI" Association="Self.FK_KITAP_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MAIL_KITAP" Association="Self.FK_MAIL_KITAP">
+            <End Role="KITAP" EntitySet="KITAP" />
+            <End Role="MAIL" EntitySet="MAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MAIL_OGRENCI" Association="Self.FK_MAIL_OGRENCI">
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+            <End Role="MAIL" EntitySet="MAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MAIL_PERSONEL" Association="Self.FK_MAIL_PERSONEL">
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+            <End Role="MAIL" EntitySet="MAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OGRENCI_BOLUM" Association="Self.FK_OGRENCI_BOLUM">
+            <End Role="BOLUM" EntitySet="BOLUM" />
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OGRENCI_GIRIS" Association="Self.FK_OGRENCI_GIRIS">
+            <End Role="GIRIS" EntitySet="GIRIS" />
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OGRENCI_OKUL" Association="Self.FK_OGRENCI_OKUL">
+            <End Role="OKUL" EntitySet="OKUL" />
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OGRENCIKATEGORI_KATEGORI" Association="Self.FK_OGRENCIKATEGORI_KATEGORI">
+            <End Role="KATEGORI" EntitySet="KATEGORI" />
+            <End Role="OGRENCIKATEGORI" EntitySet="OGRENCIKATEGORI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OGRENCIKATEGORI_OGRENCI" Association="Self.FK_OGRENCIKATEGORI_OGRENCI">
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+            <End Role="OGRENCIKATEGORI" EntitySet="OGRENCIKATEGORI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OKUL_GIRIS" Association="Self.FK_OKUL_GIRIS">
+            <End Role="GIRIS" EntitySet="GIRIS" />
+            <End Role="OKUL" EntitySet="OKUL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OKUL_YONETICI" Association="Self.FK_OKUL_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="OKUL" EntitySet="OKUL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONEL_GIRIS" Association="Self.FK_PERSONEL_GIRIS">
+            <End Role="GIRIS" EntitySet="GIRIS" />
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONEL_YONETICI" Association="Self.FK_PERSONEL_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YAZAR_PERSONEL" Association="Self.FK_YAZAR_PERSONEL">
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+            <End Role="YAZAR" EntitySet="YAZAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YAZAR_YONETICI" Association="Self.FK_YAZAR_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="YAZAR" EntitySet="YAZAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YONETICI_GIRIS" Association="Self.FK_YONETICI_GIRIS">
+            <End Role="GIRIS" EntitySet="GIRIS" />
+            <End Role="YONETICI" EntitySet="YONETICI" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KutuphaneDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BOLUM">
+          <Key>
+            <PropertyRef Name="BolumId" />
+          </Key>
+          <Property Name="BolumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BolumAd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EkleyenId" Type="Int32" />
+          <Property Name="DurumId" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+          <NavigationProperty Name="GIRIS" Relationship="Self.FK_BOLUM_GIRIS" FromRole="BOLUM" ToRole="GIRIS" />
+          <NavigationProperty Name="YONETICI" Relationship="Self.FK_BOLUM_YONETICI" FromRole="BOLUM" ToRole="YONETICI" />
+          <NavigationProperty Name="OGRENCI" Relationship="Self.FK_OGRENCI_BOLUM" FromRole="BOLUM" ToRole="OGRENCI" />
+        </EntityType>
+        <EntityType Name="CEZALAR">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrenciId" Type="Int32" />
+          <Property Name="BaslangıcTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BıtısTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Para" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IslemId" Type="Int32" />
+          <NavigationProperty Name="ISLEM" Relationship="Self.FK_CEZALAR_ISLEM" FromRole="CEZALAR" ToRole="ISLEM" />
+          <NavigationProperty Name="OGRENCI" Relationship="Self.FK_CEZALAR_OGRENCI" FromRole="CEZALAR" ToRole="OGRENCI" />
+        </EntityType>
+        <EntityType Name="GIRIS">
+          <Key>
+            <PropertyRef Name="DurumId" />
+          </Key>
+          <Property Name="DurumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DurumAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BOLUM" Relationship="Self.FK_BOLUM_GIRIS" FromRole="GIRIS" ToRole="BOLUM" />
+          <NavigationProperty Name="OGRENCI" Relationship="Self.FK_OGRENCI_GIRIS" FromRole="GIRIS" ToRole="OGRENCI" />
+          <NavigationProperty Name="OKUL" Relationship="Self.FK_OKUL_GIRIS" FromRole="GIRIS" ToRole="OKUL" />
+          <NavigationProperty Name="PERSONEL" Relationship="Self.FK_PERSONEL_GIRIS" FromRole="GIRIS" ToRole="PERSONEL" />
+          <NavigationProperty Name="YONETICI" Relationship="Self.FK_YONETICI_GIRIS" FromRole="GIRIS" ToRole="YONETICI" />
+        </EntityType>
+        <EntityType Name="IADE">
+          <Key>
+            <PropertyRef Name="IadeId" />
+          </Key>
+          <Property Name="IadeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrenciId" Type="Int32" />
+          <Property Name="KitapId" Type="Int32" />
+          <Property Name="IadeTarih" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="OGRENCI" Relationship="Self.FK_IADE_OGRENCI" FromRole="IADE" ToRole="OGRENCI" />
+          <NavigationProperty Name="KITAP" Relationship="KutuphaneDbModel.FK_IADE_KITAP" FromRole="IADE" ToRole="KITAP" />
+        </EntityType>
+        <EntityType Name="ISLEM">
+          <Key>
+            <PropertyRef Name="IslemId" />
+          </Key>
+          <Property Name="IslemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrenciId" Type="Int32" />
+          <Property Name="KitapId" Type="Int32" />
+          <Property Name="AlısTarihi" Type="DateTime" Precision="0" />
+          <Property Name="VerisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="UyeGetirTarihi" Type="DateTime" Precision="0" />
+          <Property Name="IslemDurumu" Type="Boolean" />
+          <Property Name="Uyarı" Type="DateTime" Precision="0" />
+          <Property Name="PersonelId" Type="Int32" />
+          <Property Name="YoneticiId" Type="Int32" />
+          <NavigationProperty Name="CEZALAR" Relationship="Self.FK_CEZALAR_ISLEM" FromRole="ISLEM" ToRole="CEZALAR" />
+          <NavigationProperty Name="OGRENCI" Relationship="Self.FK_ISLEM_OGRENCI" FromRole="ISLEM" ToRole="OGRENCI" />
+          <NavigationProperty Name="PERSONEL" Relationship="Self.FK_ISLEM_PERSONEL" FromRole="ISLEM" ToRole="PERSONEL" />
+          <NavigationProperty Name="YONETICI" Relationship="Self.FK_ISLEM_YONETICI" FromRole="ISLEM" ToRole="YONETICI" />
+          <NavigationProperty Name="KITAP" Relationship="KutuphaneDbModel.FK_ISLEM_KITAP" FromRole="ISLEM" ToRole="KITAP" />
+        </EntityType>
+        <EntityType Name="KATEGORI">
+          <Key>
+            <PropertyRef Name="KategoriId" />
+          </Key>
+          <Property Name="KategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" />
+          <NavigationProperty Name="OGRENCIKATEGORI" Relationship="Self.FK_OGRENCIKATEGORI_KATEGORI" FromRole="KATEGORI" ToRole="OGRENCIKATEGORI" />
+          <NavigationProperty Name="KITAP" Relationship="KutuphaneDbModel.FK_KITAP_KATEGORI" FromRole="KATEGORI" ToRole="KITAP" />
+        </EntityType>
+        <EntityType Name="MAIL">
+          <Key>
+            <PropertyRef Name="MailId" />
+          </Key>
+          <Property Name="MailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailKonu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MailMesaj" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="OgrenciId" Type="Int32" />
+          <Property Name="OgrenciMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelId" Type="Int32" />
+          <Property Name="PersonelMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KitapId" Type="Int32" />
+          <Property Name="KitapAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" />
+          <NavigationProperty Name="OGRENCI" Relationship="Self.FK_MAIL_OGRENCI" FromRole="MAIL" ToRole="OGRENCI" />
+          <NavigationProperty Name="PERSONEL" Relationship="Self.FK_MAIL_PERSONEL" FromRole="MAIL" ToRole="PERSONEL" />
+          <NavigationProperty Name="KITAP" Relationship="KutuphaneDbModel.FK_MAIL_KITAP" FromRole="MAIL" ToRole="KITAP" />
+        </EntityType>
+        <EntityType Name="OGRENCI">
+          <Key>
+            <PropertyRef Name="OgrenciId" />
+          </Key>
+          <Property Name="OgrenciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MezuniyetDurumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OkulId" Type="Int32" />
+          <Property Name="BolumId" Type="Int32" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DurumId" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+          <NavigationProperty Name="BOLUM" Relationship="Self.FK_OGRENCI_BOLUM" FromRole="OGRENCI" ToRole="BOLUM" />
+          <NavigationProperty Name="CEZALAR" Relationship="Self.FK_CEZALAR_OGRENCI" FromRole="OGRENCI" ToRole="CEZALAR" />
+          <NavigationProperty Name="GIRIS" Relationship="Self.FK_OGRENCI_GIRIS" FromRole="OGRENCI" ToRole="GIRIS" />
+          <NavigationProperty Name="IADE" Relationship="Self.FK_IADE_OGRENCI" FromRole="OGRENCI" ToRole="IADE" />
+          <NavigationProperty Name="ISLEM" Relationship="Self.FK_ISLEM_OGRENCI" FromRole="OGRENCI" ToRole="ISLEM" />
+          <NavigationProperty Name="MAIL1" Relationship="Self.FK_MAIL_OGRENCI" FromRole="OGRENCI" ToRole="MAIL" />
+          <NavigationProperty Name="OKUL" Relationship="Self.FK_OGRENCI_OKUL" FromRole="OGRENCI" ToRole="OKUL" />
+          <NavigationProperty Name="OGRENCIKATEGORI" Relationship="Self.FK_OGRENCIKATEGORI_OGRENCI" FromRole="OGRENCI" ToRole="OGRENCIKATEGORI" />
+        </EntityType>
+        <EntityType Name="OGRENCIKATEGORI">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrenciId" Type="Int32" />
+          <Property Name="KategoriId" Type="Int32" />
+          <Property Name="Durumu" Type="Boolean" />
+          <Property Name="Aktif" Type="Boolean" />
+          <NavigationProperty Name="KATEGORI" Relationship="Self.FK_OGRENCIKATEGORI_KATEGORI" FromRole="OGRENCIKATEGORI" ToRole="KATEGORI" />
+          <NavigationProperty Name="OGRENCI" Relationship="Self.FK_OGRENCIKATEGORI_OGRENCI" FromRole="OGRENCIKATEGORI" ToRole="OGRENCI" />
+        </EntityType>
+        <EntityType Name="OKUL">
+          <Key>
+            <PropertyRef Name="OkulId" />
+          </Key>
+          <Property Name="OkulId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulAdı" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EkleyenId" Type="Int32" />
+          <Property Name="DurumId" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+          <NavigationProperty Name="GIRIS" Relationship="Self.FK_OKUL_GIRIS" FromRole="OKUL" ToRole="GIRIS" />
+          <NavigationProperty Name="OGRENCI" Relationship="Self.FK_OGRENCI_OKUL" FromRole="OKUL" ToRole="OGRENCI" />
+          <NavigationProperty Name="YONETICI" Relationship="Self.FK_OKUL_YONETICI" FromRole="OKUL" ToRole="YONETICI" />
+        </EntityType>
+        <EntityType Name="PERSONEL">
+          <Key>
+            <PropertyRef Name="PersonelId" />
+          </Key>
+          <Property Name="PersonelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DurumId" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="YoneticiId" Type="Int32" />
+          <NavigationProperty Name="GIRIS" Relationship="Self.FK_PERSONEL_GIRIS" FromRole="PERSONEL" ToRole="GIRIS" />
+          <NavigationProperty Name="ISLEM" Relationship="Self.FK_ISLEM_PERSONEL" FromRole="PERSONEL" ToRole="ISLEM" />
+          <NavigationProperty Name="MAIL1" Relationship="Self.FK_MAIL_PERSONEL" FromRole="PERSONEL" ToRole="MAIL" />
+          <NavigationProperty Name="YONETICI" Relationship="Self.FK_PERSONEL_YONETICI" FromRole="PERSONEL" ToRole="YONETICI" />
+          <NavigationProperty Name="YAZAR" Relationship="Self.FK_YAZAR_PERSONEL" FromRole="PERSONEL" ToRole="YAZAR" />
+          <NavigationProperty Name="KITAP" Relationship="KutuphaneDbModel.FK_KITAP_PERSONEL" FromRole="PERSONEL" ToRole="KITAP" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="YAZAR">
+          <Key>
+            <PropertyRef Name="YazarId" />
+          </Key>
+          <Property Name="YazarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YazarAd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="YazarSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="PersonelId" Type="Int32" />
+          <Property Name="YoneticiId" Type="Int32" />
+          <NavigationProperty Name="PERSONEL" Relationship="Self.FK_YAZAR_PERSONEL" FromRole="YAZAR" ToRole="PERSONEL" />
+          <NavigationProperty Name="YONETICI" Relationship="Self.FK_YAZAR_YONETICI" FromRole="YAZAR" ToRole="YONETICI" />
+          <NavigationProperty Name="KITAP" Relationship="KutuphaneDbModel.FK_KITAP_YAZAR" FromRole="YAZAR" ToRole="KITAP" />
+        </EntityType>
+        <EntityType Name="YONETICI">
+          <Key>
+            <PropertyRef Name="YoneticiId" />
+          </Key>
+          <Property Name="YoneticiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DurumId" Type="Int32" />
+          <NavigationProperty Name="BOLUM" Relationship="Self.FK_BOLUM_YONETICI" FromRole="YONETICI" ToRole="BOLUM" />
+          <NavigationProperty Name="GIRIS" Relationship="Self.FK_YONETICI_GIRIS" FromRole="YONETICI" ToRole="GIRIS" />
+          <NavigationProperty Name="ISLEM" Relationship="Self.FK_ISLEM_YONETICI" FromRole="YONETICI" ToRole="ISLEM" />
+          <NavigationProperty Name="OKUL" Relationship="Self.FK_OKUL_YONETICI" FromRole="YONETICI" ToRole="OKUL" />
+          <NavigationProperty Name="PERSONEL" Relationship="Self.FK_PERSONEL_YONETICI" FromRole="YONETICI" ToRole="PERSONEL" />
+          <NavigationProperty Name="YAZAR" Relationship="Self.FK_YAZAR_YONETICI" FromRole="YONETICI" ToRole="YAZAR" />
+          <NavigationProperty Name="KITAP" Relationship="KutuphaneDbModel.FK_KITAP_YONETICI" FromRole="YONETICI" ToRole="KITAP" />
+        </EntityType>
+        <Association Name="FK_BOLUM_GIRIS">
+          <End Role="GIRIS" Type="Self.GIRIS" Multiplicity="0..1" />
+          <End Role="BOLUM" Type="Self.BOLUM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRIS">
+              <PropertyRef Name="DurumId" />
+            </Principal>
+            <Dependent Role="BOLUM">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BOLUM_YONETICI">
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="0..1" />
+          <End Role="BOLUM" Type="Self.BOLUM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="BOLUM">
+              <PropertyRef Name="EkleyenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OGRENCI_BOLUM">
+          <End Role="BOLUM" Type="Self.BOLUM" Multiplicity="0..1" />
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOLUM">
+              <PropertyRef Name="BolumId" />
+            </Principal>
+            <Dependent Role="OGRENCI">
+              <PropertyRef Name="BolumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CEZALAR_ISLEM">
+          <End Role="ISLEM" Type="Self.ISLEM" Multiplicity="0..1" />
+          <End Role="CEZALAR" Type="Self.CEZALAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ISLEM">
+              <PropertyRef Name="IslemId" />
+            </Principal>
+            <Dependent Role="CEZALAR">
+              <PropertyRef Name="IslemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CEZALAR_OGRENCI">
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="0..1" />
+          <End Role="CEZALAR" Type="Self.CEZALAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OGRENCI">
+              <PropertyRef Name="OgrenciId" />
+            </Principal>
+            <Dependent Role="CEZALAR">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OGRENCI_GIRIS">
+          <End Role="GIRIS" Type="Self.GIRIS" Multiplicity="0..1" />
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRIS">
+              <PropertyRef Name="DurumId" />
+            </Principal>
+            <Dependent Role="OGRENCI">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OKUL_GIRIS">
+          <End Role="GIRIS" Type="Self.GIRIS" Multiplicity="0..1" />
+          <End Role="OKUL" Type="Self.OKUL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRIS">
+              <PropertyRef Name="DurumId" />
+            </Principal>
+            <Dependent Role="OKUL">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONEL_GIRIS">
+          <End Role="GIRIS" Type="Self.GIRIS" Multiplicity="0..1" />
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRIS">
+              <PropertyRef Name="DurumId" />
+            </Principal>
+            <Dependent Role="PERSONEL">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YONETICI_GIRIS">
+          <End Role="GIRIS" Type="Self.GIRIS" Multiplicity="0..1" />
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRIS">
+              <PropertyRef Name="DurumId" />
+            </Principal>
+            <Dependent Role="YONETICI">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IADE_OGRENCI">
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="0..1" />
+          <End Role="IADE" Type="Self.IADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OGRENCI">
+              <PropertyRef Name="OgrenciId" />
+            </Principal>
+            <Dependent Role="IADE">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISLEM_OGRENCI">
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="0..1" />
+          <End Role="ISLEM" Type="Self.ISLEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OGRENCI">
+              <PropertyRef Name="OgrenciId" />
+            </Principal>
+            <Dependent Role="ISLEM">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISLEM_PERSONEL">
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="0..1" />
+          <End Role="ISLEM" Type="Self.ISLEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONEL">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="ISLEM">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISLEM_YONETICI">
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="0..1" />
+          <End Role="ISLEM" Type="Self.ISLEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="ISLEM">
+              <PropertyRef Name="YoneticiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OGRENCIKATEGORI_KATEGORI">
+          <End Role="KATEGORI" Type="Self.KATEGORI" Multiplicity="0..1" />
+          <End Role="OGRENCIKATEGORI" Type="Self.OGRENCIKATEGORI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KATEGORI">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="OGRENCIKATEGORI">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MAIL_OGRENCI">
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="0..1" />
+          <End Role="MAIL" Type="Self.MAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OGRENCI">
+              <PropertyRef Name="OgrenciId" />
+            </Principal>
+            <Dependent Role="MAIL">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MAIL_PERSONEL">
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="0..1" />
+          <End Role="MAIL" Type="Self.MAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONEL">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="MAIL">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OGRENCI_OKUL">
+          <End Role="OKUL" Type="Self.OKUL" Multiplicity="0..1" />
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OKUL">
+              <PropertyRef Name="OkulId" />
+            </Principal>
+            <Dependent Role="OGRENCI">
+              <PropertyRef Name="OkulId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OGRENCIKATEGORI_OGRENCI">
+          <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="0..1" />
+          <End Role="OGRENCIKATEGORI" Type="Self.OGRENCIKATEGORI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OGRENCI">
+              <PropertyRef Name="OgrenciId" />
+            </Principal>
+            <Dependent Role="OGRENCIKATEGORI">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OKUL_YONETICI">
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="0..1" />
+          <End Role="OKUL" Type="Self.OKUL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="OKUL">
+              <PropertyRef Name="EkleyenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONEL_YONETICI">
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="0..1" />
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="PERSONEL">
+              <PropertyRef Name="YoneticiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YAZAR_PERSONEL">
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="0..1" />
+          <End Role="YAZAR" Type="Self.YAZAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONEL">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="YAZAR">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YAZAR_YONETICI">
+          <End Role="YONETICI" Type="Self.YONETICI" Multiplicity="0..1" />
+          <End Role="YAZAR" Type="Self.YAZAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="YAZAR">
+              <PropertyRef Name="YoneticiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KutuphaneDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BOLUM" EntityType="Self.BOLUM" />
+          <EntitySet Name="CEZALAR" EntityType="Self.CEZALAR" />
+          <EntitySet Name="GIRIS" EntityType="Self.GIRIS" />
+          <EntitySet Name="IADE" EntityType="Self.IADE" />
+          <EntitySet Name="ISLEM" EntityType="Self.ISLEM" />
+          <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" />
+          <EntitySet Name="MAIL" EntityType="Self.MAIL" />
+          <EntitySet Name="OGRENCI" EntityType="Self.OGRENCI" />
+          <EntitySet Name="OGRENCIKATEGORI" EntityType="Self.OGRENCIKATEGORI" />
+          <EntitySet Name="OKUL" EntityType="Self.OKUL" />
+          <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="YAZAR" EntityType="Self.YAZAR" />
+          <EntitySet Name="YONETICI" EntityType="Self.YONETICI" />
+          <AssociationSet Name="FK_BOLUM_GIRIS" Association="Self.FK_BOLUM_GIRIS">
+            <End Role="GIRIS" EntitySet="GIRIS" />
+            <End Role="BOLUM" EntitySet="BOLUM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOLUM_YONETICI" Association="Self.FK_BOLUM_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="BOLUM" EntitySet="BOLUM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OGRENCI_BOLUM" Association="Self.FK_OGRENCI_BOLUM">
+            <End Role="BOLUM" EntitySet="BOLUM" />
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CEZALAR_ISLEM" Association="Self.FK_CEZALAR_ISLEM">
+            <End Role="ISLEM" EntitySet="ISLEM" />
+            <End Role="CEZALAR" EntitySet="CEZALAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CEZALAR_OGRENCI" Association="Self.FK_CEZALAR_OGRENCI">
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+            <End Role="CEZALAR" EntitySet="CEZALAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OGRENCI_GIRIS" Association="Self.FK_OGRENCI_GIRIS">
+            <End Role="GIRIS" EntitySet="GIRIS" />
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OKUL_GIRIS" Association="Self.FK_OKUL_GIRIS">
+            <End Role="GIRIS" EntitySet="GIRIS" />
+            <End Role="OKUL" EntitySet="OKUL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONEL_GIRIS" Association="Self.FK_PERSONEL_GIRIS">
+            <End Role="GIRIS" EntitySet="GIRIS" />
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YONETICI_GIRIS" Association="Self.FK_YONETICI_GIRIS">
+            <End Role="GIRIS" EntitySet="GIRIS" />
+            <End Role="YONETICI" EntitySet="YONETICI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IADE_OGRENCI" Association="Self.FK_IADE_OGRENCI">
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+            <End Role="IADE" EntitySet="IADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISLEM_OGRENCI" Association="Self.FK_ISLEM_OGRENCI">
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+            <End Role="ISLEM" EntitySet="ISLEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISLEM_PERSONEL" Association="Self.FK_ISLEM_PERSONEL">
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+            <End Role="ISLEM" EntitySet="ISLEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISLEM_YONETICI" Association="Self.FK_ISLEM_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="ISLEM" EntitySet="ISLEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OGRENCIKATEGORI_KATEGORI" Association="Self.FK_OGRENCIKATEGORI_KATEGORI">
+            <End Role="KATEGORI" EntitySet="KATEGORI" />
+            <End Role="OGRENCIKATEGORI" EntitySet="OGRENCIKATEGORI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MAIL_OGRENCI" Association="Self.FK_MAIL_OGRENCI">
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+            <End Role="MAIL" EntitySet="MAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MAIL_PERSONEL" Association="Self.FK_MAIL_PERSONEL">
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+            <End Role="MAIL" EntitySet="MAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OGRENCI_OKUL" Association="Self.FK_OGRENCI_OKUL">
+            <End Role="OKUL" EntitySet="OKUL" />
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OGRENCIKATEGORI_OGRENCI" Association="Self.FK_OGRENCIKATEGORI_OGRENCI">
+            <End Role="OGRENCI" EntitySet="OGRENCI" />
+            <End Role="OGRENCIKATEGORI" EntitySet="OGRENCIKATEGORI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OKUL_YONETICI" Association="Self.FK_OKUL_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="OKUL" EntitySet="OKUL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONEL_YONETICI" Association="Self.FK_PERSONEL_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YAZAR_PERSONEL" Association="Self.FK_YAZAR_PERSONEL">
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+            <End Role="YAZAR" EntitySet="YAZAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YAZAR_YONETICI" Association="Self.FK_YAZAR_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="YAZAR" EntitySet="YAZAR" />
+          </AssociationSet>
+          <EntitySet Name="KITAP" EntityType="KutuphaneDbModel.KITAP" />
+          <AssociationSet Name="FK_IADE_KITAP" Association="KutuphaneDbModel.FK_IADE_KITAP">
+            <End Role="KITAP" EntitySet="KITAP" />
+            <End Role="IADE" EntitySet="IADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISLEM_KITAP" Association="KutuphaneDbModel.FK_ISLEM_KITAP">
+            <End Role="KITAP" EntitySet="KITAP" />
+            <End Role="ISLEM" EntitySet="ISLEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_KATEGORI" Association="KutuphaneDbModel.FK_KITAP_KATEGORI">
+            <End Role="KATEGORI" EntitySet="KATEGORI" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_PERSONEL" Association="KutuphaneDbModel.FK_KITAP_PERSONEL">
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_YAZAR" Association="KutuphaneDbModel.FK_KITAP_YAZAR">
+            <End Role="YAZAR" EntitySet="YAZAR" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_YONETICI" Association="KutuphaneDbModel.FK_KITAP_YONETICI">
+            <End Role="YONETICI" EntitySet="YONETICI" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MAIL_KITAP" Association="KutuphaneDbModel.FK_MAIL_KITAP">
+            <End Role="KITAP" EntitySet="KITAP" />
+            <End Role="MAIL" EntitySet="MAIL" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="KITAP">
+          <Key>
+            <PropertyRef Name="KId" />
+          </Key>
+          <Property Name="KId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YazarId" Type="Int32" />
+          <Property Name="KategoriId" Type="Int32" />
+          <Property Name="BasımTarihi" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Sayfa" Type="Int32" />
+          <Property Name="Yayınevi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resim" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="PersonelId" Type="Int32" />
+          <Property Name="YoneticiId" Type="Int32" />
+          <NavigationProperty Name="IADE" Relationship="KutuphaneDbModel.FK_IADE_KITAP" FromRole="KITAP" ToRole="IADE" />
+          <NavigationProperty Name="ISLEM" Relationship="KutuphaneDbModel.FK_ISLEM_KITAP" FromRole="KITAP" ToRole="ISLEM" />
+          <NavigationProperty Name="KATEGORI" Relationship="KutuphaneDbModel.FK_KITAP_KATEGORI" FromRole="KITAP" ToRole="KATEGORI" />
+          <NavigationProperty Name="PERSONEL" Relationship="KutuphaneDbModel.FK_KITAP_PERSONEL" FromRole="KITAP" ToRole="PERSONEL" />
+          <NavigationProperty Name="YAZAR" Relationship="KutuphaneDbModel.FK_KITAP_YAZAR" FromRole="KITAP" ToRole="YAZAR" />
+          <NavigationProperty Name="YONETICI" Relationship="KutuphaneDbModel.FK_KITAP_YONETICI" FromRole="KITAP" ToRole="YONETICI" />
+          <NavigationProperty Name="MAIL" Relationship="KutuphaneDbModel.FK_MAIL_KITAP" FromRole="KITAP" ToRole="MAIL" />
+        </EntityType>
+        <Association Name="FK_IADE_KITAP">
+          <End Type="KutuphaneDbModel.KITAP" Role="KITAP" Multiplicity="0..1" />
+          <End Type="KutuphaneDbModel.IADE" Role="IADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KITAP">
+              <PropertyRef Name="KId" />
+            </Principal>
+            <Dependent Role="IADE">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISLEM_KITAP">
+          <End Type="KutuphaneDbModel.KITAP" Role="KITAP" Multiplicity="0..1" />
+          <End Type="KutuphaneDbModel.ISLEM" Role="ISLEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KITAP">
+              <PropertyRef Name="KId" />
+            </Principal>
+            <Dependent Role="ISLEM">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_KATEGORI">
+          <End Type="KutuphaneDbModel.KATEGORI" Role="KATEGORI" Multiplicity="0..1" />
+          <End Type="KutuphaneDbModel.KITAP" Role="KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KATEGORI">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_PERSONEL">
+          <End Type="KutuphaneDbModel.PERSONEL" Role="PERSONEL" Multiplicity="0..1" />
+          <End Type="KutuphaneDbModel.KITAP" Role="KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONEL">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_YAZAR">
+          <End Type="KutuphaneDbModel.YAZAR" Role="YAZAR" Multiplicity="0..1" />
+          <End Type="KutuphaneDbModel.KITAP" Role="KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YAZAR">
+              <PropertyRef Name="YazarId" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="YazarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_YONETICI">
+          <End Type="KutuphaneDbModel.YONETICI" Role="YONETICI" Multiplicity="0..1" />
+          <End Type="KutuphaneDbModel.KITAP" Role="KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YONETICI">
+              <PropertyRef Name="YoneticiId" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="YoneticiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MAIL_KITAP">
+          <End Type="KutuphaneDbModel.KITAP" Role="KITAP" Multiplicity="0..1" />
+          <End Type="KutuphaneDbModel.MAIL" Role="MAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KITAP">
+              <PropertyRef Name="KId" />
+            </Principal>
+            <Dependent Role="MAIL">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KutuphaneDbModelStoreContainer" CdmEntityContainer="KutuphaneDbEntities">
+          <EntitySetMapping Name="BOLUM">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.BOLUM">
+              <MappingFragment StoreEntitySet="BOLUM">
+                <ScalarProperty Name="BolumId" ColumnName="BolumId" />
+                <ScalarProperty Name="BolumAd" ColumnName="BolumAd" />
+                <ScalarProperty Name="EkleyenId" ColumnName="EkleyenId" />
+                <ScalarProperty Name="DurumId" ColumnName="DurumId" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CEZALAR">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.CEZALAR">
+              <MappingFragment StoreEntitySet="CEZALAR">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OgrenciId" ColumnName="OgrenciId" />
+                <ScalarProperty Name="BaslangıcTarihi" ColumnName="BaslangıcTarihi" />
+                <ScalarProperty Name="BıtısTarihi" ColumnName="BıtısTarihi" />
+                <ScalarProperty Name="Para" ColumnName="Para" />
+                <ScalarProperty Name="IslemId" ColumnName="IslemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GIRIS">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.GIRIS">
+              <MappingFragment StoreEntitySet="GIRIS">
+                <ScalarProperty Name="DurumId" ColumnName="DurumId" />
+                <ScalarProperty Name="DurumAd" ColumnName="DurumAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IADE">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.IADE">
+              <MappingFragment StoreEntitySet="IADE">
+                <ScalarProperty Name="IadeId" ColumnName="IadeId" />
+                <ScalarProperty Name="OgrenciId" ColumnName="OgrenciId" />
+                <ScalarProperty Name="KitapId" ColumnName="KitapId" />
+                <ScalarProperty Name="IadeTarih" ColumnName="IadeTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ISLEM">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.ISLEM">
+              <MappingFragment StoreEntitySet="ISLEM">
+                <ScalarProperty Name="IslemId" ColumnName="IslemId" />
+                <ScalarProperty Name="OgrenciId" ColumnName="OgrenciId" />
+                <ScalarProperty Name="KitapId" ColumnName="KitapId" />
+                <ScalarProperty Name="AlısTarihi" ColumnName="AlısTarihi" />
+                <ScalarProperty Name="VerisTarihi" ColumnName="VerisTarihi" />
+                <ScalarProperty Name="UyeGetirTarihi" ColumnName="UyeGetirTarihi" />
+                <ScalarProperty Name="IslemDurumu" ColumnName="IslemDurumu" />
+                <ScalarProperty Name="Uyarı" ColumnName="Uyarı" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="YoneticiId" ColumnName="YoneticiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KATEGORI">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.KATEGORI">
+              <MappingFragment StoreEntitySet="KATEGORI">
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAIL">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.MAIL">
+              <MappingFragment StoreEntitySet="MAIL">
+                <ScalarProperty Name="MailId" ColumnName="MailId" />
+                <ScalarProperty Name="MailKonu" ColumnName="MailKonu" />
+                <ScalarProperty Name="MailMesaj" ColumnName="MailMesaj" />
+                <ScalarProperty Name="OgrenciId" ColumnName="OgrenciId" />
+                <ScalarProperty Name="OgrenciMail" ColumnName="OgrenciMail" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="PersonelMail" ColumnName="PersonelMail" />
+                <ScalarProperty Name="KitapId" ColumnName="KitapId" />
+                <ScalarProperty Name="KitapAd" ColumnName="KitapAd" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OGRENCI">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.OGRENCI">
+              <MappingFragment StoreEntitySet="OGRENCI">
+                <ScalarProperty Name="OgrenciId" ColumnName="OgrenciId" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="MezuniyetDurumu" ColumnName="MezuniyetDurumu" />
+                <ScalarProperty Name="OkulId" ColumnName="OkulId" />
+                <ScalarProperty Name="BolumId" ColumnName="BolumId" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="DurumId" ColumnName="DurumId" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OGRENCIKATEGORI">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.OGRENCIKATEGORI">
+              <MappingFragment StoreEntitySet="OGRENCIKATEGORI">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OgrenciId" ColumnName="OgrenciId" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="Durumu" ColumnName="Durumu" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OKUL">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.OKUL">
+              <MappingFragment StoreEntitySet="OKUL">
+                <ScalarProperty Name="OkulId" ColumnName="OkulId" />
+                <ScalarProperty Name="OkulAdı" ColumnName="OkulAdı" />
+                <ScalarProperty Name="EkleyenId" ColumnName="EkleyenId" />
+                <ScalarProperty Name="DurumId" ColumnName="DurumId" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONEL">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.PERSONEL">
+              <MappingFragment StoreEntitySet="PERSONEL">
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="DurumId" ColumnName="DurumId" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="YoneticiId" ColumnName="YoneticiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YAZAR">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.YAZAR">
+              <MappingFragment StoreEntitySet="YAZAR">
+                <ScalarProperty Name="YazarId" ColumnName="YazarId" />
+                <ScalarProperty Name="YazarAd" ColumnName="YazarAd" />
+                <ScalarProperty Name="YazarSoyad" ColumnName="YazarSoyad" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="YoneticiId" ColumnName="YoneticiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YONETICI">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.YONETICI">
+              <MappingFragment StoreEntitySet="YONETICI">
+                <ScalarProperty Name="YoneticiId" ColumnName="YoneticiId" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="DurumId" ColumnName="DurumId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KITAP">
+            <EntityTypeMapping TypeName="KutuphaneDbModel.KITAP">
+              <MappingFragment StoreEntitySet="KITAP">
+                <ScalarProperty Name="YoneticiId" ColumnName="YoneticiId" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="Yayınevi" ColumnName="Yayınevi" />
+                <ScalarProperty Name="Sayfa" ColumnName="Sayfa" />
+                <ScalarProperty Name="BasımTarihi" ColumnName="BasımTarihi" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="YazarId" ColumnName="YazarId" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="KId" ColumnName="KId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

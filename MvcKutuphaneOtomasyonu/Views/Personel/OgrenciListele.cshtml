@@ -1,0 +1,67 @@
+﻿@using MvcKutuphaneOtomasyonu.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<OGRENCI>
+@{
+    ViewBag.Title = "OgrenciListele";
+    Layout = "~/Views/Shared/_PersonelLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>ÖĞRENCİ</h2>
+        <div class="table-responsive-xl">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ÖĞRENCİ ID</th>
+                        <th>ÖĞRENCİ ADI</th>
+                        <th>ÖĞRENCİ SOYADI</th>
+                        <th>MEZUNİYET DURUMU</th>
+                        <th>OKUL ADI</th>
+                        <th>BÖLÜM ADI</th>
+                        <th>TELEFON NUMARASI</th>
+                        <th>ADRES</th>
+                        <th>MAİL ADRESİ</th>
+                        <th>ŞİFRE</th>
+                        <th>SİL</th>
+                        <th>GÜNCELLE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ogr in Model)
+                    {
+                        <tr>
+                            <th>@ogr.OgrenciId</th>
+                            <td>@ogr.Ad</td>
+                            <td>@ogr.Soyad</td>
+                            <td>@ogr.MezuniyetDurumu</td>
+                            <td>@ogr.OKUL.OkulAdı</td>
+                            <td>@ogr.BOLUM.BolumAd</td>
+                            <td>@ogr.Telefon</td>
+                            <td>@ogr.Adres</td>
+                            <td>@ogr.Mail</td>
+                            <td>@ogr.Sifre</td>
+                            <td><a href="/Personel/OgrenciSil/@ogr.OgrenciId" class="btn btn-danger">Sil</a></td>
+                            <td><a href="/Personel/OgrenciGetir/@ogr.OgrenciId" class="btn btn-success">Güncelle</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("OgrenciListele", new { sayfa }))
+<a href="/Personel/OgrenciEkle/" class="btn btn-primary">Öğrenci Ekle</a>

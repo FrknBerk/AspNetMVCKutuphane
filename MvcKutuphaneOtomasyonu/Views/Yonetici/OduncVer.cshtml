@@ -1,0 +1,33 @@
+﻿@model MvcKutuphaneOtomasyonu.Models.Entity.ISLEM
+@{
+    ViewBag.Title = "OduncVer";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Üye Id</label>
+        @Html.DropDownListFor(x => x.OGRENCI.OgrenciId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap ID</label>
+        @Html.DropDownListFor(x => x.KITAP.KId, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Personel Id</label>
+        @Html.DropDownListFor(x => x.PERSONEL.PersonelId, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap Alış Tarihi</label>
+        <input type="text" class="form-control" name="AlısTarihi" value="@DateTime.Now.ToShortDateString()" readonly="readonly" />
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap İade Tarihi</label>
+        <input type="text" class="form-control" name="VerisTarihi" value="@DateTime.Now.AddDays(2).ToShortDateString()" />
+    </div>
+    <input type="hidden" value="false" name="IslemDurumu" />
+    <div style="margin-top:15px">
+        <button class="btn btn-group" style="background-color:#a330b5; color:white;">Kitabı Ödünç Ver</button>
+    </div>
+</form>

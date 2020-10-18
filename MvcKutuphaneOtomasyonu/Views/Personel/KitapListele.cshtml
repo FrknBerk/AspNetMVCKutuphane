@@ -1,0 +1,64 @@
+﻿@using MvcKutuphaneOtomasyonu.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<KITAP>
+@{
+    ViewBag.Title = "KitapListele";
+    Layout = "~/Views/Shared/_PersonelLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>KİTAP</h2>
+
+        <div class="table-responsive-xl">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>KİTAP ID</th>
+                        <th>KİTAP ADI</th>
+                        <th>YAZAR ID</th>
+                        <th>YAZAR ADI</th>
+                        <th>KATEGORİ ID</th>
+                        <th>KATEGORİ ADI</th>
+                        <th>BASIM TARİHİ</th>
+                        <th>RESİM</th>
+                        <th>SİL</th>
+                        <th>GÜNCELLE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ktp in Model)
+                    {
+                        <tr>
+                            <th>@ktp.KId</th>
+                            <td>@ktp.Ad</td>
+                            <td>@ktp.YazarId</td>
+                            <td>@ktp.YAZAR.YazarAd</td>
+                            <td>@ktp.KategoriId</td>
+                            <td>@ktp.KATEGORI.KategoriAd</td>
+                            <td>@ktp.BasımTarihi</td>
+                            <td>@ktp.Resim</td>
+                            <td><a href="/Personel/KitapSil/@ktp.KId" class="btn btn-danger">Sil</a></td>
+                            <td><a href="/Personel/KitapGetir/@ktp.KId" class="btn btn-success">Güncelle</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("KitapListele", new { sayfa }))
+<a href="/Personel/KitapEkle/" class="btn btn-primary">Kitap Ekle</a>

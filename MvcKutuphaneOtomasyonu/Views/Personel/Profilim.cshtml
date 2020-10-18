@@ -1,0 +1,44 @@
+﻿@model MvcKutuphaneOtomasyonu.Models.Entity.PERSONEL
+@{
+    ViewBag.Title = "Profilim";
+    Layout = "~/Views/Shared/_PersonelLayout.cshtml";
+}
+<h2>Kütüphane Personel Profil Bilgilerim</h2>
+@using (Html.BeginForm("Profilim2", "Personel", FormMethod.Post))
+{
+    <table class="table table-hover" style="margin-top:15px">
+        <tr>
+            <td>
+                <label style="font-weight:bolder"> Mail Adresi : </label> @HttpContext.Current.User.Identity.Name
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Ad</label>
+                @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Soyad</label>
+                @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control" })
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <label>Mail Adresi</label>
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Şifre</label>
+                @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td><button class="btn btn-warning">Güncelle</button></td>
+        </tr>
+    </table>
+}

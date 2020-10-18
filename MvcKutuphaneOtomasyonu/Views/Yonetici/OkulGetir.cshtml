@@ -1,0 +1,37 @@
+﻿@model MvcKutuphaneOtomasyonu.Models.Entity.OKUL
+@{
+    ViewBag.Title = "OkulGetir";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        @using (Html.BeginForm("OkulGuncelle", "Yonetici", FormMethod.Post))
+        {
+            <div style="margin-top:30px;">
+                <label><b>Okul Id</b></label>
+                @Html.TextBoxFor(x => x.OkulId, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div style="margin-top:30px;">
+                <label><b>Okul Adı</b></label>
+                @Html.TextBoxFor(x => x.OkulAdı, new { @class = "form-control" })
+            </div>
+           
+            <div style="margin-top:15px;">
+                <button class="btn btn-success">Okul Güncelle</button>
+            </div>
+        }
+    </div>
+
+</body>
+</html>

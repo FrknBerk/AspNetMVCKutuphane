@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "AnaSayfa";
+    Layout = "~/Views/Shared/_PersonelLayout.cshtml";
+}
+
+<link href="~/web2/css/style.css" rel="stylesheet" />
+<script src="~/web2/js/Chart1.js"></script>
+<script src="~/web2/js/jquery.min.js"></script>
+<script src="~/web2/js/jquery.vmap.js"></script>
+<script src="~/web2/js/jquery.vmap.sampledata.js"></script>
+<script src="~/web2/js/jquery.vmap.world.js"></script>
+<link href="~/web2/css/jqvmap.css" rel="stylesheet" />
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('#vmap').vectorMap({
+            map: 'world_en',
+            backgroundColor: '#333333',
+            color: '#ffffff',
+            hoverOpacity: 0.7,
+            selectedColor: '#666666',
+            enableZoom: true,
+            showTooltip: true,
+            values: sample_data,
+            scaleColors: ['#C8EEFF', '#006491'],
+            normalizeFunction: 'polynomial'
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (c) {
+        $('.alert-close6').on('click', function (c) {
+            $('.world-map').fadeOut('slow', function (c) {
+                $('.world-map').remove();
+            });
+        });
+    });
+</script>
+<div class="list_of_members">
+    <div class="sales">
+        <div class="icon">
+            <i class="glyphicon glyphicon-book"></i>
+        </div>
+        <div class="icon-text">
+            <h3>@ViewBag.dgr2</h3>
+            <p>Kitap Sayısı</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="new-users">
+        <div class="icon">
+            <i class="glyphicon glyphicon-user"></i>
+        </div>
+        <div class="icon-text">
+            <h3>@ViewBag.dgr1</h3>
+            <p>Toplam Öğrenci</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="orders">
+        <div class="icon">
+            <i class="glyphicon glyphicon-list" ></i>
+        </div>
+        <div class="icon-text">
+            <h3>@ViewBag.dgr3</h3>
+            <p>Kategori Sayısı</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="visitors" style="background-color:red;">
+        <div class="icon">
+            <i class="glyphicon glyphicon-circle-arrow-left"></i>
+        </div>
+        <div class="icon-text">
+            <h3>@ViewBag.dgr4</h3>
+            <p>Emanet Kitaplar</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div><br />
+    <div class="orders">
+        <div class="clearfix"></div>
+        <div class="icon">
+            <i class="glyphicon glyphicon-circle-arrow-left"></i>
+        </div>
+        <div class="icon-text">
+            <h3>@ViewBag.dgr4</h3>
+            <p>Emanet Kitaplar</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

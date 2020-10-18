@@ -1,0 +1,60 @@
+﻿@model MvcKutuphaneOtomasyonu.Models.Entity.KITAP
+@{
+    ViewBag.Title = "KitapEkle";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1254" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container">
+        <form class="form-group" method="post">
+            <div style="margin-top:30px;">
+                <label><b>Kitap Adı</b></label>
+                @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Yazar Seçiniz</b></label>
+                @Html.DropDownListFor(x => x.YAZAR.YazarId, (List<SelectListItem>)ViewBag.yzr, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Kategori Seçiniz</b></label>
+                @Html.DropDownListFor(x => x.KATEGORI.KategoriId, (List<SelectListItem>)ViewBag.ktgr, new { @class = "form-control" })
+            </div>
+            <div>
+                <label><b>Basım Tarihi</b></label><br />
+                @Html.TextBoxFor(x => x.BasımTarihi,  new { @class = "form-control"  })
+            </div>
+            <div style="margin-top:15px;">
+                <button class="btn btn-primary">Kitap Ekle</button>
+            </div>
+        </form>
+        @section scripts{
+
+            <script src="~/Scripts/jquery-ui-1.12.1.min.js" charset="windows-1254"></script>
+            <script src="~/Scripts/fullcalendar.min.js"></script>
+            <script type="text/javascript">
+                $(function () {
+                    $(".datepicker").datepicker({
+                        dateFormat: "dd/mm/yy",
+                        changeMonth: true,
+                        changeYear: true,
+                        showOn: "both",
+                    });
+                })
+            </script>
+        }
+    </div>
+
+</body>
+</html>

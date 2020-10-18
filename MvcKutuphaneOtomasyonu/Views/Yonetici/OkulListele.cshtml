@@ -1,0 +1,52 @@
+﻿@using MvcKutuphaneOtomasyonu.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<OKUL>
+@{
+    ViewBag.Title = "OkulListele";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>OKUL</h2>
+
+        <div class="table-responsive-xl">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>OKUL ID</th>
+                        <th>OKUL ADI</th>
+                        <th>SİL</th>
+                        <th>GÜNCELLE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var okl in Model)
+                    {
+                        <tr>
+                            <th>@okl.OkulId</th>
+                            <th>@okl.OkulAdı</th>
+                            <td><a href="/Yonetici/OkulSil/@okl.OkulId" class="btn btn-danger">Sil</a></td>
+                            <td><a href="/Yonetici/OkulGetir/@okl.OkulId" class="btn btn-success">Güncelle</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("OkulListele", new { sayfa }))
+<a href="/Yonetici/OkulEkle/" class="btn btn-primary">Okul Ekle</a>

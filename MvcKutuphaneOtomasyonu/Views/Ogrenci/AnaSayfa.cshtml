@@ -1,0 +1,117 @@
+﻿@using MvcKutuphaneOtomasyonu.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<KITAP>
+@{
+    ViewBag.Title = "AnaSayfa";
+    Layout = "~/Views/Shared/_OgrenciLayout.cshtml";
+}
+
+<h2>AnaSayfa</h2>
+
+@using (Html.BeginForm("AnaSayfa", "Ogrenci", FormMethod.Get))
+{
+    <div style="margin-top:15px; margin-bottom:15px;">
+        <b>Aranacak Kitap Adını Girin: &nbsp;</b>@Html.TextBox("p")
+        @*<input type="submit" value="Ara" />*@
+        <button class="glyphicon glyphicon-search">Ara</button>
+    </div>
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
+    </style>
+</head>
+<body>
+    <table class="table table-bordered">
+        <tr style="background-color:rgb(252,178,22);">
+            <th>KİTAP ADI</th>
+            <th>YAZAR ADI</th>
+            <th>KATEGORİ ADI</th>
+            <th>BASIM TARİHİ</th>
+            <th>AKTİF</th>
+            <th>KİTABI ÖDÜNÇ AL</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Ad</td>
+                <td>@x.YAZAR.YazarAd @x.YAZAR.YazarSoyad</td>
+                <td>@x.KATEGORI.KategoriAd</td>
+                <td>@x.BasımTarihi</td>
+                <td>
+                    <label class="switch">
+                        <input type="checkbox" checked value="TRUE" onclick="return false">
+                        <span class="slider round"></span>
+                    </label>
+                </td>
+                <td><a href="/Ogrenci/OduncVer/@x.KId" class="btn btn-primary">Kitabı Ödünç Al</a></td>
+            </tr>
+        }
+    </table>
+
+
+    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("AnaSayfa", new { sayfa }))
+</body>
+</html>
